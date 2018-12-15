@@ -13,8 +13,8 @@ E-Mail：hpw925@hotmail.com
 		var sPageStr = "";
 		var dCount = 0;
 		var oSource = $(this);
-		var sNoSelColor = "#666666";
-		var sSelColor = "#FFFFFF";
+		var sNoSelColor = "#0";
+		var sSelColor = "#333333";
 		var sFontColor = "#FFFFFF";
 
  		change_page_content();
@@ -25,7 +25,7 @@ E-Mail：hpw925@hotmail.com
 			dCount = oSource.children().children().length - 1;
 
 			//顯示頁碼
-			sPageStr = "<table><tr><td style='height:30px;'><b>第</b></td>";
+			sPageStr = "<table><tr><td style='height:30px;'><b> </b></td>";
 			
 			dPageIndex = 1;
 			
@@ -33,15 +33,15 @@ E-Mail：hpw925@hotmail.com
 			{
 				if (dNowIndex == dPageIndex)
 				{
-					sPageStr += "<td valign='top'><table style='width:20px;height:20px;cursor:pointer;color:" + sFontColor + ";border-collapse:collapse;border-style:solid;border-width:1px;border-color:" + sSelColor + ";background-color:" + sSelColor + "'><tr><th>" + (dPageIndex++) + "</th></tr></table></td>";
+					sPageStr += "<td valign='top'><table style='width:20px;height:20px;cursor:pointer;color:" + sFontColor + ";border-collapse:collapse;border-style:solid;border-width:0px;border-color:" + sSelColor + ";background-color:" + sSelColor + "'><tr><th>" + (dPageIndex++) + "</th></tr></table></td>";
 				}
 				else
 				{
-					sPageStr += "<td valign='top'><table style='width:20px;height:20px;cursor:pointer;color:" + sFontColor + ";border-collapse:collapse;border-style:solid;border-width:1px;border-color:" + sNoSelColor + ";background-color:" + sNoSelColor + "'><tr><th>" + (dPageIndex++) + "</th></tr></table></td>";
+					sPageStr += "<td valign='top'><table style='width:20px;height:20px;cursor:pointer;color:" + sFontColor + ";border-collapse:collapse;border-style:solid;border-width:0px;border-color:" + sNoSelColor + ";background-color:" + sNoSelColor + "'><tr><th>" + (dPageIndex++) + "</th></tr></table></td>";
 				}
 			}
 			
-			sPageStr += "<td><b>頁</b></td></tr></table>";
+			sPageStr += "<td><b> </b></td></tr></table>";
 			
 			oObj.html(sPageStr);
 			

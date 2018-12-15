@@ -18,9 +18,10 @@ from django.urls import path
 from musicer.views import hello_world
 from musicer.views import home
 from musicer.views import activity_detail
+from musicer.views import addActivity
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('hello/',hello_world),
-	path('',home),
-	path(r'^post/(?P<pk>\d+)/$', activity_detail, name='activity_detail'),
+	path('',addActivity,name='addActivity'),
+	path('post/(P<pk>\d+     )/', activity_detail, name='activity_detail'),
 ]
