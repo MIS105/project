@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+{% load staticfiles %}
+<html>
+	<head>
+		<title>Musicer</title>
+
+		<meta charset="UTF-8-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">		
+		<meta http-equiv="Expires" content="0">
+		<meta http-equiv="Pragma" content="no-cache">
+		<meta http-equiv="Cache-Control" content="no-cache">
+		<link rel="stylesheet" href="{% static 'css/main.css' %}" />
+		<script src="{% static 'js/jquery.min.js' %}"></script>
+		<script src="{% static 'js/jquery.scrolly.min.js' %}"></script>
+		<script src="{% static 'js/jquery.scrollex.min.js' %}"></script>
+		<script src="{% static 'js/skel.min.js' %}"></script>
+		<script src="{% static 'js/util.js' %}"></script>
+		<script src="{% static 'js/main.js' %}"></script>
+		<script src="{% static 'js/jquery-tablepage-1.0.js' %}"></script>
+		<link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}" />
+	</head>
+	<body>
+
+		<!-- Header -->
+			<header id="header" class="alt">
+				<div class="logo"><a href="index.html">Musicer</a></div>
+				<a href="#menu" class="toggle"><span>Menu</span></a>
+			</header>
+
+		<!-- Nav -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="generic.html">Generic</a></li>
+					<li><a href="elements.html">Elements</a></li>
+				</ul>
+			</nav>
+
+
+				<section id="three" class="wrapper style2" >
+				<div class="inner" >
+					<div>
+						<div class="box">
+							<div class="content">
+								<header class="align-center">
+											<h2>{{ activity.name }}</h2>
+								</header>
+								<hr />
+											<h3>開始時間: {{ activity.start_datetime }}</h3>
+											<h3>結束時間: {{ activity.end_datetime }}</h3>
+											<h3>活動地點: {{ activity.place }}</h3>
+											<h3>活動網址: {{ activity.website }}</h3>											
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			
+			
+			
+			<section id="four" >		
+	
+
+        <div id="map"></div>
+    
+
+		<script>
+			function initMap() {
+				var Station_latlng = { lat: 24.9984377, lng: 121.5073815 }; // 台北車站的經緯度
+				var map = new google.maps.Map(document.getElementById('map'), {
+				zoom: 17, //放大的倍率
+				center: Station_latlng //初始化的地圖中心位置
+			});
+
+        //--------下面是呼叫一個新marker------
+
+			var marker = new google.maps.Marker({
+				position: Station_latlng, //marker的放置位置
+				map: map //這邊的map指的是第四行的map變數
+			});
+
+		}
+		</script>
+		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiRYRSSzA-W9kQFwsYUKOCDeaTdBB3grk&callback=initMap">
+		</script>
+	</section>
+			
+
+
+
+	</body>
+</html>

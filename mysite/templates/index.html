@@ -5,7 +5,8 @@
 		<title>Musicer</title>
 
 		<meta charset="UTF-8-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />	
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">		
 		<meta http-equiv="Expires" content="0">
 		<meta http-equiv="Pragma" content="no-cache">
 		<meta http-equiv="Cache-Control" content="no-cache">
@@ -78,29 +79,29 @@
 					<div id="flexgrid" >
 						<div>
 							<header>
-								<h3>Tempus Feugiat</h3>
+								<h3> </h3>
 							</header>
-							<p>Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu</p>
+							<p></p>
 							<ul class="actions">
-								<li><a href="#" class="button alt">Learn More</a></li>
+								<li><a href="#" class="button alt"> </a></li>
 							</ul>
 						</div>
 						<div>
 							<header>
-								<h3>Aliquam Nulla</h3>
+								<h3> </h3>
 							</header>
-							<p>Ut convallis, sem sit amet interdum consectetuer, odio augue aliquam leo, nec dapibus tortor nibh sed </p>
+							<p>  </p>
 							<ul class="actions">
-								<li><a href="#" class="button alt">Learn More</a></li>
+								<li><a href="#" class="button alt"> </a></li>
 							</ul>
 						</div>
 						<div>
 							<header>
-								<h3>Sed Magna</h3>
+								<h3> </h3>
 							</header>
-							<p>Suspendisse mauris. Fusce accumsan mollis eros. Pellentesque a diam sit amet mi ullamcorper vehicula.</p>
+							<p> </p>
 							<ul class="actions">
-								<li><a href="#" class="button alt">Learn More</a></li>
+								<li><a href="#" class="button alt"> </a></li>
 							</ul>
 						</div>
 					</div>
@@ -179,8 +180,8 @@
 									<tbody>
 										{% for Activity in activity_list %}
 											<tr>
-											<td>{{ Activity.id }}</td>
-											<td>{{ Activity.name }}</td>						
+											<td>{{ Activity.pk }}</td>
+											<td><a href="{% url 'activity_detail' pk=Activity.pk %}">{{ Activity.name }}</a></td>						
 										{% endfor %} 
 									</tbody>
 								</table>
@@ -190,9 +191,46 @@
 					</div>
 				</div>
 			</section>
+			
+		
+	<section id="four" >		
+	
+
+        <div id="map"></div>
+    
+
+		<script>
+			function initMap() {
+				var Station_latlng = { lat: 24.9984377, lng: 121.5073815 }; // 台北車站的經緯度
+				var map = new google.maps.Map(document.getElementById('map'), {
+				zoom: 17, //放大的倍率
+				center: Station_latlng //初始化的地圖中心位置
+			});
+
+        //--------下面是呼叫一個新marker------
+
+			var marker = new google.maps.Marker({
+				position: Station_latlng, //marker的放置位置
+				map: map //這邊的map指的是第四行的map變數
+			});
+
+		}
+		</script>
+		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiRYRSSzA-W9kQFwsYUKOCDeaTdBB3grk&callback=initMap">
+		</script>
+	</section>
+			
+			
+			
+			
+			
+			
+			
+			
+
 				
 <script>
-$("#tbl").tablepage($("#table_page"), 3);
+$("#tbl").tablepage($("#table_page"), 5);
 </script>
 
 

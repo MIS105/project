@@ -15,9 +15,7 @@ def home(request):
 	
 def activity_detail(request, pk):
     activity = Activity.objects.get(pk=pk)
-    return render(request, 'index.html', {'activity': activity})
-
-
+    return render(request, 'pk.html', {'activity': activity})
 
 def addActivity(request):
     activity_list = Activity.objects.all()

@@ -2893,6 +2893,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#061322', end
 			.wrapper.style2 h1, .wrapper.style2 h2, .wrapper.style2 h3, .wrapper.style2 h4, .wrapper.style2 h5, .wrapper.style2 h6 {
 				color: #FFF;
 			}
+			
+			.wrapper.style2 h3, .wrapper.style2 h4, .wrapper.style2 h5, .wrapper.style2 h6 {
+				color: #999;
+			}
 
 			.wrapper.style2 blockquote {
 				border-left-color: rgba(0, 0, 0, 0.15);
@@ -4244,3 +4248,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#474747', end
 			}
 
 		}
+		
+	#map {
+        position: absolute;
+
+        left: 0;
+        height: 100%;
+        width: 100%;
+    }
+

@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,re_path
 from musicer.views import hello_world
 from musicer.views import home
 from musicer.views import activity_detail
@@ -23,5 +23,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('hello/',hello_world),
 	path('',addActivity,name='addActivity'),
-	path('post/(P<pk>\d+     )/', activity_detail, name='activity_detail'),
+	re_path(r'activity/(?P<pk>\d+)/', activity_detail, name='activity_detail'),
 ]
