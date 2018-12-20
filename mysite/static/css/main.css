@@ -4249,6 +4249,58 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#474747', end
 
 		}
 		
+/*search*/
+
+
+
+.search input#search{
+  width: 93.2%;
+  height: 50px;
+  background: #2a2a2a;
+  border: none;
+  font-size: 10pt;
+  float: left;
+  color: #fff;
+  padding-left: 15px;
+
+
+}
+.search input#search::-webkit-input-placeholder {
+   color: #2a2a2a;
+}
+ 
+.search input#search:-moz-placeholder { /* Firefox 18- */
+   color: #2a2a2a;  
+}
+ 
+.search input#search::-moz-placeholder {  /* Firefox 19+ */
+   color: #2a2a2a;  
+}
+ 
+.search input#search:-ms-input-placeholder {  
+   color: #2a2a2a;  
+}
+.search input.search_bt{
+  background-color: #666666;
+  height: 50px;
+  width: 70px;
+  font-size: 10pt;
+}
+
+.wrapper.style2 input[type="submit"].search_bt,
+				.wrapper.style2 button.search_bt,
+				.wrapper.style2 .button.search_bt {
+					background-color: #2a2a2a;
+					background-image: url(../images/search.png);
+					background-repeat: no-repeat; 
+					background-position: center center; 
+					color: #000000 !important;
+
+				}
+
+
+
+	
 	#map {
         position: absolute;
 
@@ -4257,3 +4309,5 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#474747', end
         width: 100%;
     }
 
+	
+	

@@ -6,7 +6,7 @@
 
 		<meta charset="UTF-8-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge">		
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">		
 		<meta http-equiv="Expires" content="0">
 		<meta http-equiv="Pragma" content="no-cache">
 		<meta http-equiv="Cache-Control" content="no-cache">
@@ -19,8 +19,16 @@
 		<script src="{% static 'js/main.js' %}"></script>
 		<script src="{% static 'js/jquery-tablepage-1.0.js' %}"></script>
 		<link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}" />
+
 	</head>
 	<body>
+	
+	<script type="text/javascript">
+	url = location.href;
+	if(url == "http://127.0.0.1:8000/search/"){
+	window.location.hash = "#three";
+	}
+	</script>
 
 		<!-- Header -->
 			<header id="header" class="alt">
@@ -119,7 +127,7 @@
 							<div class="content">
 								<h2 class="align-center">加入活動</h2>
 								<hr />
-								<form action="#" method="post">
+								<form action="http://127.0.0.1:8000/" method="post">
 									{% csrf_token %}
 									<div class="field first">
 										<label for="name">活動名稱</label>
@@ -166,10 +174,18 @@
 							<div class="content">
 								<header class="align-center">
 									<h2>活動列表</h2>
-									<!-- <p>maecenas feugiat ex purus, quis volutpat lacus placerat</p> -->
-		
+									<form action="http://127.0.0.1:8000/search/" method="post">
+									{% csrf_token %}
+										<div class="searchbox">
+											<div class="search">
+												<input type="text" name="search" id="search" placeholder="Search..." />
+												<input value="" style="border:1px #ddabf2 solid;" class="button search_bt" type="submit">
+											</div>
+										</div>
+									</form>
 								</header>
 								<hr />
+
 								<table id="tbl" border="1">
 									<thead>
 										<tr>
@@ -235,7 +251,8 @@ $("#tbl").tablepage($("#table_page"), 5);
 
 
 
-			
+
+
 
 	</body>
 </html>

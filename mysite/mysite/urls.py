@@ -19,9 +19,13 @@ from musicer.views import hello_world
 from musicer.views import home
 from musicer.views import activity_detail
 from musicer.views import addActivity
+from musicer.views import search
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hello/',hello_world),
+    path('hello/',hello_world, name='hello_world'),
 	path('',addActivity,name='addActivity'),
 	re_path(r'activity/(?P<pk>\d+)/', activity_detail, name='activity_detail'),
+    path('search/',search,name='search'),
 ]

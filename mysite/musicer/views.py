@@ -17,6 +17,11 @@ def activity_detail(request, pk):
     activity = Activity.objects.get(pk=pk)
     return render(request, 'pk.html', {'activity': activity})
 
+
+#def search(request, keyword):
+#    activity_list = Activity.objects.filter(name=keyword)
+#    return render(request, 'index.html', {'activity_list':activity_list,})
+
 def addActivity(request):
     activity_list = Activity.objects.all()
     if request.method == 'POST': #是否为post请求
@@ -35,5 +40,13 @@ def addActivity(request):
             return render(request,'index.html',{'activity_list': activity_list,})
         return render(request,'index.html',{'activity_list': activity_list,})   
     return render(request,'index.html',{'activity_list': activity_list,})
+
+
+def search(request):
+        keyword = request.POST.get('search')
+        activity_list = Activity.objects.filter(name__contains=keyword)
+        return render(request, 'index.html', {'activity_list':activity_list})
+    
+
 
     
