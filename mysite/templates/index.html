@@ -51,7 +51,12 @@
 			its extension (eg. images/banner). Your video must be available in both .mp4 and .webm
 			formats to work correctly.
 		-->
-			<section id="banner" data-video="../static/images/banner">
+			<section id="banner">
+				<video loop="true" autoplay="autoplay" muted="true">
+					<source src="{% static 'images/banner.webm' %}" type="video/webm">
+					<source src="{% static 'images/banner.mp4' %}" type="video/mp4">
+				</video>
+				
 				<div class="inner">
 					<h1>Musicer</h1>
 					<p>找尋在你我生活中的每場音樂演出</p>
@@ -69,12 +74,12 @@
 							</div>
 							<div class="content">
 								<header class="align-center">
-									<h2>Lorem ipsum dolor</h2>
-									<p>maecenas feugiat ex purus, quis volutpat lacus placerat</p>
+
+									<p></p>
 								</header>
 								<hr />
-								<p> Cras aliquet urna ut sapien tincidunt, quis malesuada elit facilisis. Vestibulum sit amet tortor velit. Nam elementum nibh a libero pharetra elementum. Maecenas feugiat ex purus, quis volutpat lacus placerat malesuada. Praesent in sem ex. Morbi mattis sapien pretium tellus venenatis, at egestas urna ornare.</p>
-								<p>Vivamus fermentum nibh vel pharetra blandit. Cras a purus urna. Sed et libero ex. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse id hendrerit felis. Nulla viverra tempor dui at congue. Pellentesque quis nulla ornare, congue nisi id, finibus nulla. Aliquam sit amet hendrerit purus. Donec libero massa, posuere fermentum eros sit amet, maximus fringilla augue. Maecenas at rhoncus lorem. Vivamus ultricies consequat est, efficitur convallis libero. Vivamus rutrum semper mauris, vitae consequat eros tempor ac. Pellentesque et ornare sapien</p>
+								<p></p>
+								<p></p>
 							</div>
 						</div>
 					</div>
@@ -209,11 +214,18 @@
 			</section>
 			
 		
-	<section id="four" >		
+	<section id="four" class="wrapper style2" >		
 	
-
-        <div id="map"></div>
-    
+		<div class="inner" >
+			<div>
+				<div class="box">
+						<div class="content">
+							<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+							<div id="map"></div>
+						</div>
+				</div>
+			</div>
+		</div>
 
 		<script>
 			function initMap() {

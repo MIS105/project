@@ -4301,12 +4301,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#474747', end
 
 
 	
-	#map {
-        position: absolute;
 
-        left: 0;
-        height: 100%;
-        width: 100%;
+	#map {
+		position:absolute;
+
+		left:10%;
+		top:10%;
+        height: 80%;
+        width: 80%;
     }
 
 	
