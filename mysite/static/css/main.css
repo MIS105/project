@@ -4304,12 +4304,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#474747', end
 
 	#map {
 		position:absolute;
-
 		left:10%;
 		top:10%;
         height: 80%;
         width: 80%;
     }
+	
+	#mmap{
+		
+	}
 
 	
 	
