@@ -3,13 +3,12 @@
 <html>
 	<head>
 		<title>Musicer</title>
-
 		<meta charset="UTF-8-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">		
-		<meta http-equiv="Expires" content="0">
-		<meta http-equiv="Pragma" content="no-cache">
-		<meta http-equiv="Cache-Control" content="no-cache">
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />	<!--設定畫面初始大小,指定螢幕寬度為裝置寬度,畫面載入初始縮放比例100%,防止使用者做畫面縮放,將畫面鎖在縮放比例,100%-->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">	<!--設置IE兼容模式,什麼版本IE就用什麼版本的標準模式-->	
+		<meta http-equiv="Cache-Control" content="no-cache">	<!--設定不要快取網頁-->
+		<meta http-equiv="Pragma" content="no-cache">	<!--設定不要快取網頁-->
+		<meta http-equiv="Expires" content="0">	<!--設定網頁到期時間-->
 		<link rel="stylesheet" href="{% static 'css/main.css' %}" />
 		<script src="{% static 'js/jquery.min.js' %}"></script>
 		<script src="{% static 'js/jquery.scrolly.min.js' %}"></script>
@@ -18,21 +17,19 @@
 		<script src="{% static 'js/util.js' %}"></script>
 		<script src="{% static 'js/main.js' %}"></script>
 		<script src="{% static 'js/jquery-tablepage-1.0.js' %}"></script>
-		<link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}" />
-
+		<link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}" /> <!--設ico圖示-->
 	</head>
 	<body>
-	
 	<script type="text/javascript">
-	url = location.href;
-	if(url == "http://127.0.0.1:8000/search/"){
-	window.location.hash = "#three";
-	}
+		url = location.href;
+		if(url == "http://127.0.0.1:8000/search/"){
+		window.location.hash = "#three";
+		}
 	</script>
 
 		<!-- Header -->
 			<header id="header" class="alt">
-				<div class="logo"><a href="index.html">Musicer</a></div>
+				<div class="logo"><a href="">Musicer</a></div>
 				<a href="#menu" class="toggle"><span>Menu</span></a>
 			</header>
 
@@ -92,29 +89,29 @@
 					<div id="flexgrid" >
 						<div>
 							<header>
-								<h3> </h3>
+								<h3>我有活動!!</h3>
 							</header>
-							<p></p>
+							<p>手動加入你所知道的音樂會吧~</p>
 							<ul class="actions">
-								<li><a href="#" class="button alt"> </a></li>
+								<li><a href="#footer" class="button alt">新增活動</a></li>
 							</ul>
 						</div>
 						<div>
 							<header>
-								<h3> </h3>
+								<h3>搜尋活動!!</h3>
 							</header>
-							<p>  </p>
+							<p>輸入關鍵字找找想要的音樂會吧~</p>
 							<ul class="actions">
-								<li><a href="#" class="button alt"> </a></li>
+								<li><a href="#three" class="button alt">活動列表</a></li>
 							</ul>
 						</div>
 						<div>
 							<header>
-								<h3> </h3>
+								<h3>附近的活動!!</h3>
 							</header>
-							<p> </p>
+							<p>來看看潛藏在你身邊的音樂會吧~</p>
 							<ul class="actions">
-								<li><a href="#" class="button alt"> </a></li>
+								<li><a href="#four" class="button alt">周遭活動</a></li>
 							</ul>
 						</div>
 					</div>
@@ -125,12 +122,12 @@
 		
 
 		<!-- Footer -->
-			<footer id="footer" class="wrapper">
+			<footer name="add" id="footer" class="wrapper">
 				<div class="inner">
 					<section>
 						<div class="box">
 							<div class="content">
-								<h2 class="align-center">加入活動</h2>
+								<h2 class="align-center">新增活動</h2>
 								<hr />
 								<form action="http://127.0.0.1:8000/" method="post">
 									{% csrf_token %}
