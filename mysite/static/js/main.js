@@ -120,6 +120,40 @@
 					offset: $height
 				});
 			}
+			
+		// Scrolly1.
+			if ( $( ".scrolly1" ).length ) {
+
+				var $height = $('#header').height() * 0.95;
+
+				$('.scrolly1').scrolly({
+					offset: $height
+				});
+			}
+		
+		// Scrolly2.
+			if ( $( ".scrolly2" ).length ) {
+
+				var $height = $('#header').height() * 0.95;
+
+				$('.scrolly2').scrolly({
+					offset: $height
+				});
+			}
+		
+		// Scrolly3.
+			if ( $( ".scrolly3" ).length ) {
+
+				var $height = $('#header').height() * 0.95;
+
+				$('.scrolly3').scrolly({
+					offset: $height
+				});
+			}
+			
+		
+		
+			
 
 		// Menu.
 			$('#menu')
