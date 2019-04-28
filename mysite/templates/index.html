@@ -199,7 +199,7 @@
 										{% for Activity in activity_list %}
 											<tr>
 											<td>{{ Activity.pk }}</td>
-											<td><a href="{% url 'activity_detail' pk=Activity.pk %}">{{ Activity.name }}</a></td>						
+											<td><a href="{% url 'activity_detail' pk=Activity.pk %}">{{ Activity.name }}</a></td>
 										{% endfor %} 
 									</tbody>
 								</table>
@@ -211,7 +211,7 @@
 			</section>
 			
 		
-	<section id="four" class="wrapper style2" >		
+		<section id="four" class="wrapper style2" >		
 	
 		<div class="inner" >
 			<div>
@@ -223,27 +223,92 @@
 				</div>
 			</div>
 		</div>
+		
+		
+		
+		
+		
+		
 
 		<script>
+			var map, infoWindow;
 			function initMap() {
-				var Station_latlng = { lat: 24.9984377, lng: 121.5073815 }; // 台北車站的經緯度
-				var map = new google.maps.Map(document.getElementById('map'), {
-				zoom: 17, //放大的倍率
-				center: Station_latlng //初始化的地圖中心位置
-			});
+			
+				geocoder = new google.maps.Geocoder();
+				map = new google.maps.Map(document.getElementById('map'), {
+					center: { lat: 25.028085, lng: 121.535614 },
+					zoom: 14
+				});
+	
+				infoWindow = new google.maps.InfoWindow;
+	
+				if (navigator.geolocation) {
+					navigator.geolocation.getCurrentPosition(function (position) {
+						var pos = {
+							lat: position.coords.latitude,
+							lng: position.coords.longitude
+						};
+						infoWindow.setPosition(pos);
+						infoWindow.setContent('<b>Your Location.<b>');
+						infoWindow.open(map);
+						map.setCenter(pos);
+					}, function () {
+						handleLocationError(true, infoWindow, map.getCenter());
+					});
+				} else {
+					// Browser doesn't support Geolocation
+					handleLocationError(false, infoWindow, map.getCenter());
+				}
+				
+				var address = {{ map_list|safe }};
+				for (var j=0;j<address.length;j++){
+					geocoder.geocode({ 'address': address[j].place }, function (results, status) {
+						if (status == 'OK') {
+							var marker = new google.maps.Marker({
+								map: map,
+								position: results[0].geometry.location,
+							});
+							var contentString = '<div id="content">' +
+								'<div id="siteNotice">' +
+								'</div>' +
+								'<h1><b>Name:</b>' +
+								'<div id="bodyContent">' +
+								'<p><b>時間:</b>' +
+								'<p><b>地點:</b>' +
+								'<p><b>連結:</b>: <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' +
+								'https://en.wikipedia.org/w/index.php?title=Uluru</a> ' +
+								'</div>' +
+								'</div>';
+							var Markerwindow = new google.maps.InfoWindow({
+								content: contentString,
+								maxWidth: 200
+							});
+							marker.addListener('click', function () {
+								Markerwindow.open(map, marker);
+							});
+						} else {
+							console.log(status);
+						}
+					});
+			  
+				}//for
+			  
+			}
 
-        //--------下面是呼叫一個新marker------
 
-			var marker = new google.maps.Marker({
-				position: Station_latlng, //marker的放置位置
-				map: map //這邊的map指的是第四行的map變數
-			});
-
-		}
+	
+			function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+				infoWindow.setPosition(pos);
+				infoWindow.setContent(browserHasGeolocation ?
+					'Error: The Geolocation service failed.' :
+					'Error: Your browser doesn\'t support geolocation.');
+				infoWindow.open(map);
+			}
 		</script>
-		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiRYRSSzA-W9kQFwsYUKOCDeaTdBB3grk&callback=initMap">
+		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvCJh-iPO1rBOsXSc0SVPR_qAn1_lF4XI&callback=initMap">
 		</script>
 	</section>
+			
 			
 			
 			
