@@ -37,13 +37,11 @@ def addActivity(request):
         if form.is_valid(): #检查输入是否规范
             name = form.cleaned_data['name']
             sdt = form.cleaned_data['sdt']
-            edt = form.cleaned_data['edt']
             place = form.cleaned_data['place']
             website = form.cleaned_data['website']
             sdt = sdt.replace('T',' ')
-            edt = edt.replace('T',' ')  
-            newdata = name+" "+sdt+" "+edt+" "+place+" "+website
-            Activity.objects.create(name = name, start_datetime = sdt, end_datetime = edt, place = place, website = website)      
+            newdata = name+" "+sdt+" "+place+" "+website
+            Activity.objects.create(name = name, start_datetime = sdt, place = place, website = website)      
             activity_list = Activity.objects.all()
             return render(request,'index.html',{'activity_list': activity_list,   'map_list': json.dumps(map_list),})
         return render(request,'index.html',{'activity_list': activity_list,   'map_list': json.dumps(map_list),})   

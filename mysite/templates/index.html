@@ -261,7 +261,8 @@
 				}
 				
 				var address = {{ map_list|safe }};
-				for (var j=0;j<address.length;j++){
+				for (var j=5;j<address.length;j++){
+					
 					geocoder.geocode({ 'address': address[j].place }, function (results, status) {
 						if (status == 'OK') {
 							var marker = new google.maps.Marker({
