@@ -43,6 +43,7 @@ def addActivity(request):
             newdata = name+" "+sdt+" "+place+" "+website
             Activity.objects.create(name = name, start_datetime = sdt, place = place, website = website)      
             activity_list = Activity.objects.all()
+            print(len(activity_list))
             return render(request,'index.html',{'activity_list': activity_list,   'map_list': json.dumps(map_list),})
         return render(request,'index.html',{'activity_list': activity_list,   'map_list': json.dumps(map_list),})   
     return render(request,'index.html',{'activity_list': activity_list,  'map_list': json.dumps(map_list),})

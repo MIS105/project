@@ -141,14 +141,9 @@
 										<input id="place" name="place" type="text" placeholder="Place">
 										
 									</div>
-									<div class="field half"> 
+									<div class="field"> 
 										 <label for="sdt">開始時間</label> 
 										 <input id="sdt" name="sdt" type="datetime-local"> 
-										
-									</div>
-									<div class="field half"> 
-										 <label for="edt">結束時間</label> 
-										 <input id="edt" name="edt" type="datetime-local"> 
 										
 									</div>
 									<div class="field">
@@ -232,6 +227,9 @@
 
 		<script>
 			var map, infoWindow;
+							var address = {{ map_list|safe }};
+				var nextAddress = 0;
+				var delay = 100;
 			function initMap() {
 			
 				geocoder = new google.maps.Geocoder();
@@ -260,41 +258,89 @@
 					handleLocationError(false, infoWindow, map.getCenter());
 				}
 				
-				var address = {{ map_list|safe }};
-				for (var j=5;j<address.length;j++){
-					
-					geocoder.geocode({ 'address': address[j].place }, function (results, status) {
-						if (status == 'OK') {
-							var marker = new google.maps.Marker({
-								map: map,
-								position: results[0].geometry.location,
-							});
-							var contentString = '<div id="content">' +
-								'<div id="siteNotice">' +
-								'</div>' +
-								'<h1><b>Name:</b>' +
-								'<div id="bodyContent">' +
-								'<p><b>時間:</b>' +
-								'<p><b>地點:</b>' +
-								'<p><b>連結:</b>: <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' +
-								'https://en.wikipedia.org/w/index.php?title=Uluru</a> ' +
-								'</div>' +
-								'</div>';
-							var Markerwindow = new google.maps.InfoWindow({
-								content: contentString,
-								maxWidth: 200
-							});
-							marker.addListener('click', function () {
-								Markerwindow.open(map, marker);
-							});
-						} else {
-							console.log(status);
-						}
-					});
-			  
-				}//for
+
+				//address.forEach((ele) => {
+					//setTimeout('getAddress("'+address[nextAddress]+'",theNext)', delay);
+					//nextAddress++;
+					//getAddress(ele.place) 
+				//})
+				theNext()
+				
+				
 			  
 			}
+			
+			function theNext() {
+        if (nextAddress < address.length) {
+          setTimeout('getAddress("'+address[nextAddress].place+'",theNext)', delay);
+          nextAddress++;
+        } 
+      }
+			
+  // ====== Geocoding ======
+  function getAddress(search, next) {
+    geocoder.geocode({address:search}, function (results,status)
+      { 
+        // If that was successful
+        if (status == google.maps.GeocoderStatus.OK) {
+          // Lets assume that the first marker is the one we want
+          var p = results[0].geometry.location;
+          var lat=p.lat();
+          var lng=p.lng();
+          // Output the data
+            var msg = 'address="' + search + '" lat=' +lat+ ' lng=' +lng+ '(delay='+delay+'ms)<br>';
+			console.log(msg)
+          // Create a marker
+          var marker = new google.maps.Marker({
+							map: map,
+							position: results[0].geometry.location,
+						});
+        }
+        // ====== Decode the error status ======
+        else {
+          // === if we were sending the requests to fast, try this one again and increase the delay
+          if (status == google.maps.GeocoderStatus.OVER_QUERY_LIMIT) {
+            nextAddress--;
+            delay++;
+          } else {
+            var reason="Code "+status;
+            var msg = 'address="' + search + '" error=' +reason+ '(delay='+delay+'ms)<br>';
+          }   
+        }
+        next();
+      }
+    );
+  }
+			function getAddress1(place) {
+				geocoder.geocode({ 'address': place }, function (results, status) {
+					if (status == 'OK') {
+						var marker = new google.maps.Marker({
+							map: map,
+							position: results[0].geometry.location,
+						});
+						var contentString = '<div id="content">' +
+							'<div id="siteNotice">' +
+							'</div>' +
+							'<h1><b>Name:</b>' +
+							'<div id="bodyContent">' +
+							'<p><b>時間:</b>' +
+							'<p><b>地點:</b>' +
+							'<p><b>連結:</b>: <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' +
+							'https://en.wikipedia.org/w/index.php?title=Uluru</a> ' +
+							'</div>' +
+							'</div>';
+						var Markerwindow = new google.maps.InfoWindow({
+							content: contentString,
+							maxWidth: 200
+						});
+						marker.addListener('click', function () {
+							Markerwindow.open(map, marker);
+						});
+					} else {
+						console.log(status);
+					}
+				});
+			  }
 
 
 	
@@ -321,7 +367,7 @@
 
 				
 <script>
-$("#tbl").tablepage($("#table_page"), 5);
+$("#tbl").tablepage($("#table_page"), 7);
 </script>
 
 
