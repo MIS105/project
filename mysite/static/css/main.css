@@ -1677,15 +1677,36 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#474747', end
 				}
 	#map {
 		position:absolute;
-		left:10%;
-		top:10%;
-        height: 80%;
-        width: 80%;
+		left:8%;
+		top:20%;
+        height:72%;
+        width: 84%;
     }
 	
-	#mmap{
-		
+	
+	#mapDate {
+		position:absolute;
+		left:8%;
+		top:14%;
+		height:6%;
+		width: 74%;
 	}
+	
+	#mapButton {
+		position:absolute;
+		left:82%;
+		top:14%;
+		height:6%;
+		width: 10%;
+		background-color:#66b3ff;
+	}
+	
+
+	
+	
+	
+	
+
 
 	
 	

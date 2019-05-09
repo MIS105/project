@@ -58,6 +58,17 @@ def search(request):
         m.__dict__.pop("_state")
         map_list.append(m.__dict__)
     return render(request, 'index.html', {'activity_list':activity_list,  'map_list': json.dumps(map_list),})
+	
+	
+def dateSearch(request):
+    keyword = request.POST.get('mapDate')
+    activity_list = Activity.objects.filter(start_datetime__contains=keyword)
+    mlist = Activity.objects.filter(start_datetime__contains=keyword)
+    map_list = []
+    for m in mlist:
+        m.__dict__.pop("_state")
+        map_list.append(m.__dict__)
+    return render(request, 'index.html', {'activity_list':activity_list,  'map_list': json.dumps(map_list),})
     
 
 

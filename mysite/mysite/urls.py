@@ -20,6 +20,7 @@ from musicer.views import home
 from musicer.views import activity_detail
 from musicer.views import addActivity
 from musicer.views import search
+from musicer.views import dateSearch
 
 
 urlpatterns = [
@@ -28,4 +29,5 @@ urlpatterns = [
 	path('',addActivity,name='addActivity'),
 	re_path(r'activity/(?P<pk>\d+)/', activity_detail, name='activity_detail'),
     path('search/',search,name='search'),
+	path('dateSearch/',dateSearch,name='dateSearch'),
 ]
