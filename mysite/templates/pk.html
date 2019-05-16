@@ -72,24 +72,61 @@
 			</div>
 		</div>
 
-		<script>
+		<script>		
 			function initMap() {
-				var Station_latlng = { lat: 24.9984377, lng: 121.5073815 }; // 台北車站的經緯度
-				var map = new google.maps.Map(document.getElementById('map'), {
-				zoom: 17, //放大的倍率
-				center: Station_latlng //初始化的地圖中心位置
-			});
+				geocoder = new google.maps.Geocoder();
+				map = new google.maps.Map(document.getElementById('map'), {
+					center: { lat: 25.028085, lng: 121.535614 },
+					zoom: 14
+				});
+			
+				var address = '{{ activity.place }}';
+				geocoder.geocode({ address : address }, function (results, status) {
+					if (status == 'OK') {
+						map.setCenter(results[0].geometry.location);
+						var marker = new google.maps.Marker({
+							map: map,
+							position: results[0].geometry.location
+						});
+					} else {
+						alert('Geocode was not successful for the following reason: ' + status);
+					}
+				});
+
+				var contentString = '<div id="content">' +
+					'<div id="siteNotice">' +
+					'</div>' +
+					'<h1><b>Name: </b>'+'{{activity.name}}'+
+					'<div id="bodyContent">' +
+					'<p><b>時間: </b>' +'{{ activity.start_datetime }}'+
+					'<p><b>地點: </b>' +'{{ activity.place }}'+
+				    '<p><b>連結: </b>' +'{{ activity.website }}'+
+					'</div>' +
+					'</div>';
+
+				var Markerwindow = new google.maps.InfoWindow({
+					content: contentString,
+					maxWidth: 200
+				});
+				marker.addListener('click', function () {
+					Markerwindow.open(map, marker);
+				});
+			}
+
+				//var Station_latlng = { lat: 24.9984377, lng: 121.5073815 }; // 台北車站的經緯度
+				//var map = new google.maps.Map(document.getElementById('map'), {
+				//zoom: 17, //放大的倍率
+				//center: Station_latlng //初始化的地圖中心位置
+				//});
 
         //--------下面是呼叫一個新marker------
 
-			var marker = new google.maps.Marker({
-				position: Station_latlng, //marker的放置位置
-				map: map //這邊的map指的是第四行的map變數
-			});
-
-		}
+				//var marker = new google.maps.Marker({
+				//position: Station_latlng, //marker的放置位置
+				//map: map //這邊的map指的是第四行的map變數
+				//});
 		</script>
-		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiRYRSSzA-W9kQFwsYUKOCDeaTdBB3grk&callback=initMap">
+		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvCJh-iPO1rBOsXSc0SVPR_qAn1_lF4XI&libraries=places&callback=initMap">
 		</script>
 	</section>
 			

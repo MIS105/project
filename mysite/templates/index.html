@@ -1,259 +1,312 @@
 <!DOCTYPE HTML>
 {% load staticfiles %}
 <html>
-	<head>
-		<title>Musicer</title>
-		<meta charset="UTF-8-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />	<!--設定畫面初始大小,指定螢幕寬度為裝置寬度,畫面載入初始縮放比例100%,防止使用者做畫面縮放,將畫面鎖在縮放比例,100%-->
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">	<!--設置IE兼容模式,什麼版本IE就用什麼版本的標準模式-->	
-		<meta http-equiv="Cache-Control" content="no-cache">	<!--設定不要快取網頁-->
-		<meta http-equiv="Pragma" content="no-cache">	<!--設定不要快取網頁-->
-		<meta http-equiv="Expires" content="0">	<!--設定網頁到期時間-->
-		<link rel="stylesheet" href="{% static 'css/main.css' %}" />
-		<script src="{% static 'js/jquery.min.js' %}"></script>
-		<script src="{% static 'js/jquery.scrolly.min.js' %}"></script>
-		<script src="{% static 'js/jquery.scrollex.min.js' %}"></script>
-		<script src="{% static 'js/skel.min.js' %}"></script>
-		<script src="{% static 'js/util.js' %}"></script>
-		<script src="{% static 'js/main.js' %}"></script>
-		<script src="{% static 'js/jquery-tablepage-1.0.js' %}"></script>
-		<link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}" /> <!--設ico圖示-->
-	</head>
-	<body>
+
+<head>
+	<title>Musicer</title>
+	<meta charset="UTF-8-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+	<!--設定畫面初始大小,指定螢幕寬度為裝置寬度,畫面載入初始縮放比例100%,防止使用者做畫面縮放,將畫面鎖在縮放比例,100%-->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!--設置IE兼容模式,什麼版本IE就用什麼版本的標準模式-->
+	<meta http-equiv="Cache-Control" content="no-cache">
+	<!--設定不要快取網頁-->
+	<meta http-equiv="Pragma" content="no-cache">
+	<!--設定不要快取網頁-->
+	<meta http-equiv="Expires" content="0">
+	<!--設定網頁到期時間-->
+	<link rel="stylesheet" href="{% static 'css/main.css' %}" />
+	<script src="{% static 'js/jquery.min.js' %}"></script>
+	<script src="{% static 'js/jquery.scrolly.min.js' %}"></script>
+	<script src="{% static 'js/jquery.scrollex.min.js' %}"></script>
+	<script src="{% static 'js/skel.min.js' %}"></script>
+	<script src="{% static 'js/util.js' %}"></script>
+	<script src="{% static 'js/main.js' %}"></script>
+	<script src="{% static 'js/jquery-tablepage-1.0.js' %}"></script>
+	<link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}" />
+	<!--設ico圖示-->
+</head>
+
+<body>
 	<script type="text/javascript">
 		url = location.href;
-		if(url == "http://127.0.0.1:8000/search/"){
-		window.location.hash = "#three";
+		if (url == "http://127.0.0.1:8000/search/") {
+			window.location.hash = "#three";
 		}
-		
-		if(url == "http://127.0.0.1:8000/dateSearch/"){
-		window.location.hash = "#four";
+
+		if (url == "http://127.0.0.1:8000/dateSearch/") {
+			window.location.hash = "#four";
 		}
-		
-		
+
+
 	</script>
 
-		<!-- Header -->
-			<header id="header" class="alt">
-				<div class="logo"><a href="">Musicer</a></div>
-				<a href="#menu" class="toggle"><span>Menu</span></a>
-			</header>
+	<!-- Header -->
+	<header id="header" class="alt">
+		<div class="logo"><a href="">Musicer</a></div>
+		<a href="#menu" class="toggle"><span>Menu</span></a>
+	</header>
 
-		<!-- Nav -->
-			<nav id="menu">
-				<ul class="links">
-					<li><a href="#footer" class="scrolly1">新增活動</a></li>
-					<li><a href="#three" class="scrolly2">活動列表</a></li>
-					<li><a href="#four" class="scrolly3">周遭活動</a></li>
-				</ul>
-			</nav>
+	<!-- Nav -->
+	<nav id="menu">
+		<ul class="links">
+			<li><a href="#footer" class="scrolly1">新增活動</a></li>
+			<li><a href="#three" class="scrolly2">活動列表</a></li>
+			<li><a href="#four" class="scrolly3">周遭活動</a></li>
+		</ul>
+	</nav>
 
-		<!-- Banner -->
-		<!--
+	<!-- Banner -->
+	<!--
 			To use a video as your background, set data-video to the name of your video without
 			its extension (eg. images/banner). Your video must be available in both .mp4 and .webm
 			formats to work correctly.
 		-->
-			<section id="banner">
-				<video loop="true" autoplay="autoplay" muted="true">
-					<source src="{% static 'images/banner.webm' %}" type="video/webm">
-					<source src="{% static 'images/banner.mp4' %}" type="video/mp4">
-				</video>
-				
-				<div class="inner">
-					<h1>Musicer</h1>
-					<p>找尋在你我生活中的每場音樂演出</p>
-					<a href="#one" class="button special scrolly">開始</a>
+	<section id="banner">
+		<video loop="true" autoplay="autoplay" muted="true">
+			<source src="{% static 'images/banner.webm' %}" type="video/webm">
+			<source src="{% static 'images/banner.mp4' %}" type="video/mp4">
+		</video>
+
+		<div class="inner">
+			<h1>Musicer</h1>
+			<p>找尋在你我生活中的每場音樂演出</p>
+			<a href="#one" class="button special scrolly">開始</a>
+		</div>
+	</section>
+
+	<!-- One -->
+	<section id="one" class="wrapper style2">
+		<div class="inner">
+			<div>
+				<div class="box">
+					<div class="image fit">
+						<img src="../static/images/pic01.jpg" alt="" />
+					</div>
+					<div class="content">
+						<header class="align-center">
+
+							<p></p>
+						</header>
+						<hr />
+						<p></p>
+						<p></p>
+					</div>
 				</div>
-			</section>
+			</div>
+		</div>
+	</section>
 
-		<!-- One -->
-			<section id="one" class="wrapper style2" >
-				<div class="inner" >
-					<div>
-						<div class="box">
-							<div class="image fit">
-								<img src="../static/images/pic01.jpg" alt="" />
-							</div>
-							<div class="content">
-								<header class="align-center">
+	<!-- Two -->
+	<section id="two" class="wrapper style3">
+		<div class="inner">
+			<div id="flexgrid">
+				<div>
+					<header>
+						<h3>我有活動!!</h3>
+					</header>
+					<p>手動加入你所知道的音樂會吧~</p>
+					<ul class="actions">
+						<li><a href="#footer" class="button alt scrolly1">新增活動</a></li>
+					</ul>
+				</div>
+				<div>
+					<header>
+						<h3>搜尋活動!!</h3>
+					</header>
+					<p>輸入關鍵字找找想要的音樂會吧~</p>
+					<ul class="actions">
+						<li><a href="#three" class="button alt scrolly2">活動列表</a></li>
+					</ul>
+				</div>
+				<div>
+					<header>
+						<h3>附近的活動!!</h3>
+					</header>
+					<p>來看看潛藏在你身邊的音樂會吧~</p>
+					<ul class="actions">
+						<li><a href="#four" class="button alt scrolly3">周遭活動</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
 
-									<p></p>
-								</header>
-								<hr />
-								<p></p>
-								<p></p>
+
+
+
+	<!-- Footer -->
+	<footer name="add" id="footer" class="wrapper">
+		<div class="inner">
+			<section>
+				<div class="box">
+					<div class="content">
+						<h2 class="align-center">新增活動</h2>
+						<hr />
+						<form action="http://127.0.0.1:8000/" method="post">
+							{% csrf_token %}
+							<div class="field first">
+								<label for="name">活動名稱</label>
+								<input id="name" name="name" type="text" placeholder="Name">
+
 							</div>
-						</div>
+							<div class="field">
+								<label for="place">活動地點</label>
+								<input id="place" name="place" type="text" placeholder="Place">
+
+							</div>
+							<div class="field">
+								<label for="sdt">開始時間</label>
+								<input id="sdt" name="sdt" type="datetime-local">
+
+							</div>
+							<div class="field">
+								<label for="place">活動網址</label>
+								<input id="website" name="website" type="text" placeholder="Website">
+
+							</div>
+							<ul class="actions align-center">
+								<li><input value="Add Activity" class="button special" type="submit"></li>
+							</ul>
+
+						</form>
 					</div>
 				</div>
 			</section>
 
-		<!-- Two -->
-			<section id="two" class="wrapper style3" >
-				<div class="inner" >
-					<div id="flexgrid" >
-						<div>
-							<header>
-								<h3>我有活動!!</h3>
-							</header>
-							<p>手動加入你所知道的音樂會吧~</p>
-							<ul class="actions">
-								<li><a href="#footer" class="button alt scrolly1">新增活動</a></li>
-							</ul>
-						</div>
-						<div>
-							<header>
-								<h3>搜尋活動!!</h3>
-							</header>
-							<p>輸入關鍵字找找想要的音樂會吧~</p>
-							<ul class="actions">
-								<li><a href="#three" class="button alt scrolly2">活動列表</a></li>
-							</ul>
-						</div>
-						<div>
-							<header>
-								<h3>附近的活動!!</h3>
-							</header>
-							<p>來看看潛藏在你身邊的音樂會吧~</p>
-							<ul class="actions">
-								<li><a href="#four" class="button alt scrolly3">周遭活動</a></li>
-							</ul>
-						</div>
+		</div>
+	</footer>
+
+
+	<section id="three" class="wrapper style2">
+		<div class="inner">
+			<div>
+				<div class="box">
+					<div class="content">
+						<header class="align-center">
+							<h2>活動列表</h2>
+							<form action="http://127.0.0.1:8000/search/" method="post">
+								{% csrf_token %}
+								<div class="searchbox">
+									<div class="search">
+										<input type="text" name="search" id="search" placeholder="Search..." />
+										<input value="" style="border:1px #ddabf2 solid;" class="button search_bt" type="submit">
+									</div>
+								</div>
+							</form>
+						</header>
+						<hr />
+
+						<table id="tbl" border="1">
+							<thead>
+								<tr>
+									<th align="left">ID</th>
+									<th align="left">Name</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for Activity in activity_list %}
+								<tr>
+									<td>{{ Activity.pk }}</td>
+									<td><a href="{% url 'activity_detail' pk=Activity.pk %}">{{ Activity.name }}</a></td>
+									{% endfor %}
+							</tbody>
+						</table>
+						<span id='table_page'></span>
 					</div>
 				</div>
-			</section>
+			</div>
+		</div>
+	</section>
 
-		
-		
 
-		<!-- Footer -->
-			<footer name="add" id="footer" class="wrapper">
-				<div class="inner">
-					<section>
-						<div class="box">
-							<div class="content">
-								<h2 class="align-center">新增活動</h2>
-								<hr />
-								<form action="http://127.0.0.1:8000/" method="post">
-									{% csrf_token %}
-									<div class="field first">
-										<label for="name">活動名稱</label>
-										<input id="name" name="name" type="text" placeholder="Name">
-										
-									</div>
-									<div class="field">
-										<label for="place">活動地點</label>
-										<input id="place" name="place" type="text" placeholder="Place">
-										
-									</div>
-									<div class="field"> 
-										 <label for="sdt">開始時間</label> 
-										 <input id="sdt" name="sdt" type="datetime-local"> 
-										
-									</div>
-									<div class="field">
-										<label for="place">活動網址</label>
-										<input id="website" name="website" type="text" placeholder="Website">
-										
-									</div>
-									<ul class="actions align-center">
-										<li><input value="Add Activity" class="button special" type="submit"></li>
-									</ul>
+	<section id="four" class="wrapper style2">
 
-								</form>
-							</div>
-						</div>
-					</section>
-					
-				</div>
-			</footer>
-
-			
-			<section id="three" class="wrapper style2" >
-				<div class="inner" >
-					<div>
-						<div class="box">
-							<div class="content">
-								<header class="align-center">
-									<h2>活動列表</h2>
-									<form action="http://127.0.0.1:8000/search/" method="post">
-									{% csrf_token %}
-										<div class="searchbox">
-											<div class="search">
-												<input type="text" name="search" id="search" placeholder="Search..." />
-												<input value="" style="border:1px #ddabf2 solid;" class="button search_bt" type="submit">
-											</div>
-										</div>
-									</form>
-								</header>
-								<hr />
-
-								<table id="tbl" border="1">
-									<thead>
-										<tr>
-											<th align="left">ID</th>
-											<th align="left">Name</th>
-										</tr>
-									</thead>
-									<tbody>
-										{% for Activity in activity_list %}
-											<tr>
-											<td>{{ Activity.pk }}</td>
-											<td><a href="{% url 'activity_detail' pk=Activity.pk %}">{{ Activity.name }}</a></td>
-										{% endfor %} 
-									</tbody>
-								</table>
-								<span id='table_page'></span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-			
-		
-		<section id="four" class="wrapper style2" >		
-	
-		<div class="inner" >
+		<div class="inner">
 			<div>
 				<div class="box">
 					<div class="content">
 						<form action="http://127.0.0.1:8000/dateSearch/" method="post">
-						{% csrf_token %}
+							{% csrf_token %}
 
-						<input id="mapDate" name="mapDate" type="date"> 
-						<input id="mapButton" name="mapButton" value="search" class="search_map" type="submit">
+							<input id="mapDate" name="mapDate" type="date">
+							<input id="mapButton" name="mapButton" value="search" class="search_map" type="submit">
 						</form>
-							<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>						
-						<div id="map">
-							
+						<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+						<input id="pac-input" class="controls" type="text" placeholder="查詢地點">
+						<div id="map" >
+
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		
-		
-		
-		
-		
-		
-
 		<script>
 			var map, infoWindow;
-							var address = {{ map_list|safe }};
-				var nextAddress = 0;
-				var delay = 100;
+			var address = {{ map_list| safe }};
+			var nextAddress = 0;
+			var delay = 100;
+
 			function initMap() {
-			
 				geocoder = new google.maps.Geocoder();
 				map = new google.maps.Map(document.getElementById('map'), {
 					center: { lat: 25.028085, lng: 121.535614 },
 					zoom: 14
 				});
-	
+
+				var input = document.getElementById('pac-input');
+				var searchBox = new google.maps.places.SearchBox(input);
+				map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+				map.addListener('bounds_changed', function () {
+					searchBox.setBounds(map.getBounds());
+				});
+				var markers = [];
+				searchBox.addListener('places_changed', function () {
+					var places = searchBox.getPlaces();
+
+					if (places.length == 0) {
+						return;
+					}
+
+					markers.forEach(function (marker) {
+						marker.setMap(null);
+					});
+					markers = [];
+
+					var bounds = new google.maps.LatLngBounds();
+					places.forEach(function (place) {
+						if (!place.geometry) {
+							console.log("Returned place contains no geometry");
+							return;
+						}
+						var icon = {
+							url: place.icon,
+							size: new google.maps.Size(71, 71),
+							origin: new google.maps.Point(0, 0),
+							anchor: new google.maps.Point(17, 34),
+							scaledSize: new google.maps.Size(25, 25)
+						};
+
+						markers.push(new google.maps.Marker({
+							map: map,
+							icon: icon,
+							title: place.name,
+							position: place.geometry.location
+						}));
+
+						if (place.geometry.viewport) {
+
+							bounds.union(place.geometry.viewport);
+						} else {
+							bounds.extend(place.geometry.location);
+						}
+					});
+					map.fitBounds(bounds);
+				});
+
 				infoWindow = new google.maps.InfoWindow;
-	
+
 				if (navigator.geolocation) {
 					navigator.geolocation.getCurrentPosition(function (position) {
 						var pos = {
@@ -268,81 +321,46 @@
 						handleLocationError(true, infoWindow, map.getCenter());
 					});
 				} else {
-					// Browser doesn't support Geolocation
 					handleLocationError(false, infoWindow, map.getCenter());
 				}
-				
-
-				//address.forEach((ele) => {
-					//setTimeout('getAddress("'+address[nextAddress]+'",theNext)', delay);
-					//nextAddress++;
-					//getAddress(ele.place) 
-				//})
 				theNext()
-				
-				
-			  
 			}
-			
+
 			function theNext() {
-        if (nextAddress < address.length) {
-          setTimeout('getAddress("'+address[nextAddress].place+'",theNext)', delay);
-          nextAddress++;
-        } 
-      }
-			
-  // ====== Geocoding ======
-  function getAddress(search, next) {
-    geocoder.geocode({address:search}, function (results,status)
-      { 
-        // If that was successful
-        if (status == google.maps.GeocoderStatus.OK) {
-          // Lets assume that the first marker is the one we want
-          var p = results[0].geometry.location;
-          var lat=p.lat();
-          var lng=p.lng();
-          // Output the data
-            var msg = 'address="' + search + '" lat=' +lat+ ' lng=' +lng+ '(delay='+delay+'ms)<br>';
-			console.log(msg)
-          // Create a marker
-          var marker = new google.maps.Marker({
-							map: map,
-							position: results[0].geometry.location,
-						});
-        }
-        // ====== Decode the error status ======
-        else {
-          // === if we were sending the requests to fast, try this one again and increase the delay
-          if (status == google.maps.GeocoderStatus.OVER_QUERY_LIMIT) {
-            nextAddress--;
-            delay++;
-          } else {
-            var reason="Code "+status;
-            var msg = 'address="' + search + '" error=' +reason+ '(delay='+delay+'ms)<br>';
-          }   
-        }
-        next();
-      }
-    );
-  }
-			function getAddress1(place) {
-				geocoder.geocode({ 'address': place }, function (results, status) {
-					if (status == 'OK') {
+				if (nextAddress < address.length) {
+					setTimeout('getAddress("' + nextAddress + '",theNext)', delay);
+					nextAddress++;
+				}
+			}
+
+
+			function getAddress(search, next) {
+				geocoder.geocode({ address: address[search].place }, function (results, status) {
+					if (status == google.maps.GeocoderStatus.OK) {
+						var p = results[0].geometry.location;
+						var lat = p.lat();
+						var lng = p.lng();
+						var msg = 'address="' + search + '" lat=' + lat + ' lng=' + lng + '(delay=' + delay + 'ms)<br>';
 						var marker = new google.maps.Marker({
 							map: map,
 							position: results[0].geometry.location,
 						});
+
+						getweb = function(search){
+							window.open(address[search].website)
+						}
+						
 						var contentString = '<div id="content">' +
 							'<div id="siteNotice">' +
 							'</div>' +
-							'<h1><b>Name:</b>' +
+							'<h1><b>Name: </b>' +address[search].name+
 							'<div id="bodyContent">' +
-							'<p><b>時間:</b>' +
-							'<p><b>地點:</b>' +
-							'<p><b>連結:</b>: <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' +
-							'https://en.wikipedia.org/w/index.php?title=Uluru</a> ' +
+							'<p><b>時間: </b>' +address[search].start_datetime+
+							'<p><b>地點: </b>' +address[search].place+
+						    '<p><b>連結: </b> <a onclick="getweb('+search+');">' +address[search].website+'</a> '+
 							'</div>' +
 							'</div>';
+
 						var Markerwindow = new google.maps.InfoWindow({
 							content: contentString,
 							maxWidth: 200
@@ -350,14 +368,21 @@
 						marker.addListener('click', function () {
 							Markerwindow.open(map, marker);
 						});
-					} else {
-						console.log(status);
 					}
-				});
-			  }
+					else {
+						if (status == google.maps.GeocoderStatus.OVER_QUERY_LIMIT) {
+							nextAddress--;
+							delay++;
+						} else {
+							var reason = "Code " + status;
+							var msg = 'address="' + search + '" error=' + reason + '(delay=' + delay + 'ms)<br>';
+						}
+					}
+					next();
+				}
+				);
+			}
 
-
-	
 			function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 				infoWindow.setPosition(pos);
 				infoWindow.setContent(browserHasGeolocation ?
@@ -366,28 +391,30 @@
 				infoWindow.open(map);
 			}
 		</script>
-		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvCJh-iPO1rBOsXSc0SVPR_qAn1_lF4XI&callback=initMap">
-		</script>
+		<script async defer
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvCJh-iPO1rBOsXSc0SVPR_qAn1_lF4XI&libraries=places&callback=initMap">
+			</script>
 	</section>
-			
-			
-			
-			
-			
-			
-			
-			
-			
-
-				
-<script>
-$("#tbl").tablepage($("#table_page"), 7);
-</script>
 
 
 
 
 
 
-	</body>
+
+
+
+
+
+	<script>
+		$("#tbl").tablepage($("#table_page"), 7);
+	</script>
+
+
+
+
+
+
+</body>
+
 </html>
