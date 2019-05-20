@@ -3,7 +3,7 @@
 <html>
 
 <head>
-	<title>Musicer</title>
+	<title>MusicBro</title>
 	<meta charset="UTF-8-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
 	<!--設定畫面初始大小,指定螢幕寬度為裝置寬度,畫面載入初始縮放比例100%,防止使用者做畫面縮放,將畫面鎖在縮放比例,100%-->
@@ -43,7 +43,7 @@
 
 	<!-- Header -->
 	<header id="header" class="alt">
-		<div class="logo"><a href="">Musicer</a></div>
+		<div class="logo"><a href="">MusicBro</a></div>
 		<a href="#menu" class="toggle"><span>Menu</span></a>
 	</header>
 
@@ -69,7 +69,7 @@
 		</video>
 
 		<div class="inner">
-			<h1>Musicer</h1>
+			<h1>MusicBro</h1>
 			<p>找尋在你我生活中的每場音樂演出</p>
 			<a href="#one" class="button special scrolly">開始</a>
 		</div>
@@ -88,9 +88,11 @@
 
 							<p></p>
 						</header>
+
+						<h1>智慧型音樂會建置系統──MusicBro</h1>
 						<hr />
-						<p></p>
-						<p></p>
+						<p>使用爬蟲蒐集各地的音樂資訊,提供給每位使用者最即時最齊全的音樂活動</p>
+						
 					</div>
 				</div>
 			</div>
@@ -190,7 +192,8 @@
 								<div class="searchbox">
 									<div class="search">
 										<input type="text" name="search" id="search" placeholder="Search..." />
-										<input value="" style="border:1px #ddabf2 solid;" class="button search_bt" type="submit">
+										<input value="" style="border:1px #ddabf2 solid;" class="button search_bt"
+											type="submit">
 									</div>
 								</div>
 							</form>
@@ -208,7 +211,9 @@
 								{% for Activity in activity_list %}
 								<tr>
 									<td>{{ Activity.pk }}</td>
-									<td><a href="{% url 'activity_detail' pk=Activity.pk %}">{{ Activity.name }}</a></td>
+									<td><a href="{% url 'activity_detail' pk=Activity.pk %}"
+											target="_blank">{{ Activity.name }}</a>
+									</td>
 									{% endfor %}
 							</tbody>
 						</table>
@@ -234,7 +239,7 @@
 						</form>
 						<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 						<input id="pac-input" class="controls" type="text" placeholder="查詢地點">
-						<div id="map" >
+						<div id="map">
 
 						</div>
 					</div>
@@ -246,7 +251,7 @@
 			var address = {{ map_list| safe }};
 			var nextAddress = 0;
 			var delay = 100;
-
+			var lastwindow = null;
 			function initMap() {
 				geocoder = new google.maps.Geocoder();
 				map = new google.maps.Map(document.getElementById('map'), {
@@ -333,7 +338,6 @@
 				}
 			}
 
-
 			function getAddress(search, next) {
 				geocoder.geocode({ address: address[search].place }, function (results, status) {
 					if (status == google.maps.GeocoderStatus.OK) {
@@ -344,29 +348,30 @@
 						var marker = new google.maps.Marker({
 							map: map,
 							position: results[0].geometry.location,
+							icon: '../static/images/pick.png'
 						});
-
-						getweb = function(search){
+						var website = "";
+						getweb = function (search) {
 							window.open(address[search].website)
 						}
-						
 						var contentString = '<div id="content">' +
 							'<div id="siteNotice">' +
 							'</div>' +
-							'<h1><b>Name: </b>' +address[search].name+
+							'<h1><b>Name: </b>' + address[search].name +
 							'<div id="bodyContent">' +
-							'<p><b>時間: </b>' +address[search].start_datetime+
-							'<p><b>地點: </b>' +address[search].place+
-						    '<p><b>連結: </b> <a onclick="getweb('+search+');">' +address[search].website+'</a> '+
+							'<p><b>時間: </b>' + address[search].start_datetime +
+							'<p><b>地點: </b>' + address[search].place +
+							'<p><b>連結: </b>: <a onclick="getweb(' + search + ');">' + address[search].website + '</a> ' +
 							'</div>' +
 							'</div>';
-
 						var Markerwindow = new google.maps.InfoWindow({
 							content: contentString,
-							maxWidth: 200
+							maxWidth: 1000
 						});
 						marker.addListener('click', function () {
+							closeLastOpenedInfoWindow()
 							Markerwindow.open(map, marker);
+							lastwindow = Markerwindow;
 						});
 					}
 					else {
@@ -381,6 +386,12 @@
 					next();
 				}
 				);
+			}
+
+			function closeLastOpenedInfoWindow() {
+				if (lastwindow) {
+					lastwindow.close();
+				}
 			}
 
 			function handleLocationError(browserHasGeolocation, infoWindow, pos) {
