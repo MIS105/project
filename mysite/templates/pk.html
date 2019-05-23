@@ -118,7 +118,6 @@
 										origin: pos,
 										destination: results[0].geometry.location,
 										travelMode: 'TRANSIT',
-										transitOptions: { modes: ['SUBWAY'] }
 									};
 									directionsService.route(request, function (result, status) {
 										if (status == 'OK') {

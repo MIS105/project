@@ -27,7 +27,7 @@ import json
 
 def addActivity(request):
     activity_list = Activity.objects.all()
-    mlist = Activity.objects.all()
+    mlist = Activity.objects.all().order_by("-start_datetime")
     map_list = []
     for m in mlist:
         m.__dict__.pop("_state")
