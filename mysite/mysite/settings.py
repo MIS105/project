@@ -80,7 +80,7 @@ DATABASES = {
         'NAME':'Musicer',
         'USER': 'student',
         'PASSWORD': '123456',
-        'HOST': '140.118.148.81',                     
+        'HOST': '140.118.148.191',                     
         'PORT': '3306',
     }
 }
